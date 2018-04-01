@@ -1,0 +1,20 @@
+<!-- index.html -->
+{% extends "base.html" %}
+{% block title %}二手交易{% endblock %}
+{% block content %}
+<div class="contrainer">
+    {% if message %}
+    <div class="alert alert-warning">{{message}}</div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-heading" align="center">
+                <h3>我的ddf</h3>
+            </div>
+        </div>
+    </div>
+    {% if username %}
+        欢迎:{{username}}
+    {% endif %}
+</div>
+{% endblock %}
