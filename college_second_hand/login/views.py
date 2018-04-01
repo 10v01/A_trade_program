@@ -5,6 +5,7 @@ from django.template.loader import get_template
 from django.http import HttpResponse
 from login import models, forms
 from django.middleware.csrf import get_token
+from .forms import LoginForm
 
 # Create your views here.
 
@@ -17,6 +18,7 @@ def index(request, pid = None, del_pass = None):
     return HttpResponse(html)
 
 def login(request):
+    message = ""
     if request.method == 'POST':
         login_form = forms.LoginForm(request.POST)
         if login_form.is_valid():
@@ -38,9 +40,4 @@ def login(request):
     else:
         login_form = forms.LoginForm()
 
-    template = get_template('login.html')
-    #request_context = RequestContext(request)
-    #request_context.push(locals())
-    html = template.render(locals())
-    response = HttpResponse(html)
-    return response
+    return render(request, 'login.html', {'form': login_form, 'message': message})
