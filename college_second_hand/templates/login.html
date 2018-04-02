@@ -3,9 +3,9 @@
 {% block title %}登录{% endblock %}
 {% block content %}
 <div class="container">
-    {% if message %}
-        <div class="alert alert-warning">{{message}}</div>
-    {% endif %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -18,10 +18,9 @@
     <form action="." method="POST">
         {% csrf_token %}
         <table>
-            {{form.as_table}}
+            {{login_form.as_table}}
         </table>
         <input type="submit" value="登录"><br />
     </form>
-    <p>{{rlt}}</p>
 </div>
 {% endblock %}
