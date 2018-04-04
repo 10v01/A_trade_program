@@ -6,15 +6,6 @@
     {% for message in messages %}
     <div class="alert alert-{{message.tags}}">{{message}}</div>
     {% endfor %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading" align="center">
-                    <h3>我的ddf</h3>
-                </div>
-            </div>
-        </div>
-    </div>
     {% if username %}
         欢迎:{{username}}
     {% endif %}

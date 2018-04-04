@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # Create your views here.
 
@@ -14,6 +15,7 @@ def index(request, pid = None, del_pass = None):
     if request.user.is_authenticated:
         username = request.user.username
     messages.get_messages(request)
+    TheTimeOfNow = datetime.now()
     return render(request,'index.html',locals())
 
 @login_required(login_url='/login/')
@@ -24,6 +26,7 @@ def userinfo(request):
             userinfo = User.objects.get(username = username)
         except:
             pass
+    TheTimeOfNow = datetime.now()
     return render(request, 'userinfo.html', locals())
 
 def login(request):
@@ -43,10 +46,10 @@ def login(request):
             else:
                 messages.add_message(request, messages.WARNING,"登录失败")
         else:
-            messages.add_message(request, message.INFO, "请检查输入字段的内容")
+            messages.add_message(request, messages.INFO, "请检查输入字段的内容")
     else:
         login_form = forms.LoginForm()
-
+    TheTimeOfNow = datetime.now()
     return render(request,'login.html',locals())
 
 def logout(request):
@@ -55,4 +58,24 @@ def logout(request):
     return redirect('/')
 
 def register(request):
-    return redirect('/' )
+    if request.method == 'POST':
+        register_form = forms.RegisterForm(request.POST)
+        if register_form.is_valid():
+            register_name = request.POST['username'].strip()
+            register_password = request.POST['password']
+            confirm_password = request.POST['confirm_password']
+            if confirm_password == register_password:
+                try:
+                    user_exist = User.objects.get(username = register_name)
+                    messages.add_message(request, messages.WARNING, "此用户名已被注册")
+                except:
+                    User.objects.create_user(register_name, '', register_password)
+                    messages.add_message(request, messages.SUCCESS, "注册成功")
+            else:
+                messages.add_message(request, message.INFO, "两次输入的密码不符")
+        else:
+            messages.add_message(request, messages.INFO, "请检查输入字段的内容")
+    else:
+        login_form = forms.LoginForm()
+    TheTimeOfNow = datetime.now()
+    return render(request,'register.html',locals())
