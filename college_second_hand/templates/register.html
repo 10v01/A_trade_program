@@ -1,6 +1,6 @@
 <!--login.html -->
 {% extends "base.html" %}
-{% block title %}登录{% endblock %}
+{% block title %}注册{% endblock %}
 {% block styleshit %}<link href="/static/css/signin.css" rel="stylesheet">{% endblock %}
 {% block content %}
 <div class="container">
@@ -11,19 +11,15 @@
 
         <form class="form-signin" action="/accounts/register" method="POST">
             {% csrf_token %}
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading">Please register</h2>
             <label for="inputUsername" class="sr-only">Username</label>
             <input type="text" maxlength="16" id="inputUsername" name = 'username' class="form-control" placeholder="Username" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" name = 'password' class="form-control" placeholder="Password" required>
             <label for="confirmPassword" class="sr-only">Confirm_Password</label>
             <input type="password" id="confirmPassword" name="confirm_password" class="form-control" placeholder="Confirm your password" required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <br /><br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
 
     </div>
