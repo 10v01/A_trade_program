@@ -24,4 +24,7 @@ urlpatterns = [
     path('', views.index),
     path('userinfo',views.userinfo),
     path('accounts/register', views.register),
+    path('mylist', views.mylist),
+    path('mymark', views.mymark),
+    path('mycart', views.mycart),
 ]

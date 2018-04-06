@@ -71,11 +71,24 @@ def register(request):
                 except:
                     User.objects.create_user(register_name, '', register_password)
                     messages.add_message(request, messages.SUCCESS, "注册成功")
+                    return redirect('/')
             else:
-                messages.add_message(request, messages.INFO, "两次输入的密码不符")
+                messages.add_message(request, messages.WARNING, "两次输入的密码不符")
         else:
             messages.add_message(request, messages.INFO, "请检查输入字段的内容")
     else:
         login_form = forms.LoginForm()
     TheTimeOfNow = datetime.now()
     return render(request,'register.html',locals())
+
+def mylist(request):
+    TheTimeOfNow = datetime.now()
+    return render(request, 'mylist.html', locals())
+
+def mymark(request):
+    TheTimeOfNow = datetime.now()
+    return render(request, 'mymark.html', locals())
+
+def mycart(request):
+    TheTimeOfNow = datetime.now()
+    return render(request, 'mycart.html', locals())

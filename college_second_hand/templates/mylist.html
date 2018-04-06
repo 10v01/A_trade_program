@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}我的订单{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="container">
+        <p align="certer">
+            暂时还莓有这个功能
+        </p>
+    </div>
+</div>
+{% endblock %}
