@@ -2,12 +2,67 @@
 {% extends "base.html" %}
 {% block title %}二手交易{% endblock %}
 {% block content %}
+
 <div class="contrainer">
     {% for message in messages %}
     <div class="alert alert-{{message.tags}}">{{message}}</div>
     {% endfor %}
-    {% if username %}
-        欢迎:{{username}}
-    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    <h3>欢淫光淋二手交♂易网站</h3>
+                    {% if username %}
+                        欢迎:{{username}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for product in products %}
+            {% if forloop.first %}
+                <div class="list-group">
+            {% endif %}
+                    <a href="/product/{{product.uid}}" class="list-group-item">
+                        名称：{{product.name}}
+                        价格：{{product.price}}
+                        卖家：{{product.seller}}
+                    </a>
+            {% if forloop.last %}
+                </div>
+            {% endif %}
+        {% empty %}
+            <center><h3>目前没有商品</h3></center>
+        {% endfor %}
+    </div>
+    <div class="row" align="center">
+            目前是第{{ products.number }}页
+    </div>
+    <div class="pagination pagination-centered" style="height: auto;">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="row" align="center">
+        {% if products.has_previous %}
+            <button class="btn btn-info">
+                <a href="?p={{ products.previous_page_number }}">上一页</a>
+            </button>
+        {% else %}
+            <button class="btn">
+                <a href="#">上一页</a>
+            </button>
+        {% endif %}
+        {% if products.has_next %}
+            <button class="btn btn-info">
+                <a href="?p={{ products.next_page_number }}">下一页</a>
+            </button>
+        {% else %}
+            <button class="btn">
+                <a href="#">下一页</a>
+            </button>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
