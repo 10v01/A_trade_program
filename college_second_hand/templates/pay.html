@@ -1,6 +1,6 @@
 <!--pay.html -->
 {% extends "base.html" %}
-{% block title %}登录{% endblock %}
+{% block title %}付款{% endblock %}
 {% block content %}
 <div class="container">
     {% for message in messages %}
@@ -11,8 +11,7 @@
             <form class="form-signin" action="#" method="POST">
                 {% csrf_token %}
                 <h2 class="form-signin-heading">输入密码以确认购买</h2>
-                <label for="inputPassword" class="sr-only">密码</label>
-                <input type="password" id="inputPassword" name = 'password' class="form-control" placeholder="Password" required>
+                <input type="password" name='password' class="form-control" placeholder="Password" required />
                 <br />
                 <button class="btn btn-lg btn-primary btn-block" type="submit">确认</button>
             </form>

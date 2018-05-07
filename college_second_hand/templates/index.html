@@ -24,10 +24,13 @@
             {% if forloop.first %}
                 <div class="list-group">
             {% endif %}
-                    <a href="/product/{{product.uid}}" class="list-group-item">
+                    <a href="/product/{{product.id}}" class="list-group-item">
                         名称：{{product.name}}
+                        <br />
                         价格：{{product.price}}
+                        <br />
                         卖家：{{product.seller}}
+                        <br />
                     </a>
             {% if forloop.last %}
                 </div>
@@ -46,22 +49,22 @@
     </div>
     <div class="row" align="center">
         {% if products.has_previous %}
-            <button class="btn btn-info">
-                <a href="?p={{ products.previous_page_number }}">上一页</a>
-            </button>
+            <a class="btn btn-info" href="?p={{ products.previous_page_number }}">
+                上一页
+            </a>
         {% else %}
-            <button class="btn">
-                <a href="#">上一页</a>
-            </button>
+            <a class="btn btn-default" href="#">
+                上一页
+            </a>
         {% endif %}
         {% if products.has_next %}
-            <button class="btn btn-info">
-                <a href="?p={{ products.next_page_number }}">下一页</a>
-            </button>
+            <a class="btn btn-info" href="?p={{ products.next_page_number }}">
+                下一页
+            </a>
         {% else %}
-            <button class="btn">
-                <a href="#">下一页</a>
-            </button>
+            <a class="btn btn-default " href="#">
+                下一页
+            </a>
         {% endif %}
     </div>
 </div>

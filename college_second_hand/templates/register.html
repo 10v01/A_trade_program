@@ -12,12 +12,9 @@
         <form class="form-signin" action="/accounts/register" method="POST">
             {% csrf_token %}
             <h2 class="form-signin-heading">Please register</h2>
-            <label for="inputUsername" class="sr-only">Username</label>
-            <input type="text" maxlength="16" id="inputUsername" name = 'username' class="form-control" placeholder="Username" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" name = 'password' class="form-control" placeholder="Password" required>
-            <label for="confirmPassword" class="sr-only">Confirm_Password</label>
-            <input type="password" id="confirmPassword" name="confirm_password" class="form-control" placeholder="Confirm your password" required>
+            <input type="text" maxlength="16" name='username' class="form-control" placeholder="Username" required autofocus />
+            <input type="password" name='password' class="form-control" placeholder="Password" required />
+            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm your password" required />
             <br /><br />
             <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>

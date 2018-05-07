@@ -6,13 +6,26 @@
     {% for message in messages %}
     <div class="alert alert-{{message.tags}}">{{message}}</div>
     {% endfor %}
-    <div class="row" align="center">
-        {{ id }}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    ID:
+                    <br />
+                    {{ product.id }}
+                    <br />
+                    Description:
+                    <br />
+                    {{ product.description }}
+            </div>
+        </div>
     </div>
     <div class="row" align="center">
-        <button class="btn btn-info">
-            <a href="/pay/{{ id }}">支付</a>
-        </button>
+        <form action="/cart_add" method="POST">
+            {% csrf_token %}
+            <input type='hidden' name='product_id' value='{{ product.id }}' />
+            <button class="btn btn-info" type="submit">加入购物车</button>
+        </form>
     </div>
 </div>
 {% endblock %}

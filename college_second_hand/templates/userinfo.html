@@ -12,8 +12,19 @@
         </div>
     </div>
     <p>
-        姓名:{{ userinfo.username }}
-        id:{{ userinfo }}
+        ID:{{ userinfo.user.username }}
+        <br />
+        uid:{{ userinfo.user.id }}
+        <br />
+        姓名：{{ userinfo.full_name }}
+        <br />
+        地址:{{ userinfo.address }}
+        <br />
+        电话：{{ userinfo.phone }}
+        <br />
+        绑定的支付账号：************
+        <br />
+
     </p>
 </div>
 {% endblock %}

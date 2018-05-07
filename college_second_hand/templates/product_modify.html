@@ -1,0 +1,42 @@
+<!-- product_add.html -->
+{% extends "base.html" %}
+{% block title %}修改商品信息{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="form-signin" action="#" method="POST">
+                {% csrf_token %}
+                <h2>输入商品信息</h2>
+                类别：
+                <br />
+                {% for category in categories %}
+                    {% if category.id == product_cur.category.id %}
+                        <input type="radio" name="category" value="{{ category.id }}" checked required />{{ category.name }}<br />
+                    {% else %}
+                        <input type="radio" name="category" value="{{ category.id }}" required />{{ category.name }}<br />
+                    {% endif %}
+                {% endfor %}
+                <br />
+                价格：
+                <input type="number" name="price" value="{{ product_cur.price }}" min="0" max="99999999.99" step="0.01" class="form-control" required />
+                <br />
+                商品名：
+                <br />
+                <input type="text" name="name" value="{{ product_cur.name }}" maxlength="32" class="form-control" required />
+                <br />
+                描述：
+                <br />
+                <textarea name='description' maxlength="256" class="form-control">{{ product_cur.description }}</textarea>
+                <br />
+                <br />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">确认</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
