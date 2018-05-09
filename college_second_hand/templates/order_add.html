@@ -1,4 +1,4 @@
-<!-- cart_add.html -->
+<!-- order_add.html -->
 {% extends "base.html" %}
 {% block title %}添加至购物车{% endblock %}
 {% block content %}
@@ -15,9 +15,9 @@
                     {% if state == 2 %} 请补充你的地址 {% endif %}
                     {% if state == 3 %} 请补充你的手机号 {% endif %}
                     {% if state == 4 %} 啥？你想购买自己卖的物品？ {% endif %}
-                    {% if state == 5 %} 此商品不处于待售状态 {% endif %}
-                    {% if state == 6 %} 此商品已在你的购物车中 {% endif %}
-                    {% if state == 7 %} 添加成功 {% endif %}
+                    {% if state == 5 %} 你已提交过此商品的订单 {% endif %}
+                    {% if state == 6 %} 此商品不处于待售状态 {% endif %}
+                    {% if state == 7 %} 订单成功生成 {% endif %}
                 </div>
             </div>
         </div>

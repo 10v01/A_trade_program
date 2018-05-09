@@ -1,7 +1,6 @@
-<!-- mycart.html -->
-<!-- index.html -->
+<!-- myorder.html -->
 {% extends "base.html" %}
-{% block title %}购物车{% endblock %}
+{% block title %}我的订单{% endblock %}
 {% block content %}
 
 <div class="contrainer">
@@ -21,16 +20,21 @@
                         卖家：{{order.product.seller}}
                         <br />
                     </a>
-                    <form action="/cart_remove" method="POST">
+                    <form action="/order_remove" method="POST">
                         {% csrf_token %}
                         <input type='hidden' name='order_id' value='{{ order.id }}' />
-                        <button class="btn btn-info" type="submit">移出购物车</button>
+                        <button class="btn btn-info" type="submit">删除订单</button>
+                    </form>
+                    <form action="/pay" method="POST">
+                        {% csrf_token %}
+                        <input type='hidden' name='order_id' value='{{ order.id }}' />
+                        <button class="btn btn-info" type="submit">去支付</button>
                     </form>
             {% if forloop.last %}
                 </div>
             {% endif %}
         {% empty %}
-            <center><h3>购物车是空的</h3></center>
+            <center><h3>没有订单</h3></center>
         {% endfor %}
     </div>
     <div class="row" align="center">

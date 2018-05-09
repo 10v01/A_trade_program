@@ -10,8 +10,17 @@ class RegisterForm(forms.Form):
     password = forms.CharField(label = '密码', widget = forms.PasswordInput(), max_length = 32)
     confirm_password = forms.CharField(label = '确认密码', widget = forms.PasswordInput(), max_length = 32)
 
-class CartAddForm(forms.Form):
+class OrderAddForm(forms.Form):
     product_id = forms.IntegerField()
+
+class OrderRemoveForm(forms.Form):
+    order_id = forms.IntegerField()
+
+class MarkAddForm(forms.Form):
+    product_id = forms.IntegerField()
+
+class MarkRemoveForm(forms.Form):
+    mark_id = forms.IntegerField()
 
 class ProductForm(forms.Form):
     category = forms.IntegerField(label='category', min_value = 1, max_value = 3)
@@ -20,3 +29,9 @@ class ProductForm(forms.Form):
 
 class ProductDescriptionForm(forms.Form):
     description = forms.CharField(max_length=256)
+
+class ProductRemoveForm(forms.Form):
+    product_id = forms.IntegerField
+
+class PayForm(forms.Form):
+    order_id = forms.IntegerField()

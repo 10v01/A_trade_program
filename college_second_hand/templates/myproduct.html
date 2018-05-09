@@ -1,6 +1,6 @@
-<!-- index.html -->
+<!-- myproduct.html -->
 {% extends "base.html" %}
-{% block title %}选择你要修改的商品{% endblock %}
+{% block title %}我的商品{% endblock %}
 {% block content %}
 
 <div class="contrainer">
@@ -12,13 +12,14 @@
             {% if forloop.first %}
                 <div class="list-group">
             {% endif %}
-                    <a href="/product_modify/{{product.id}}" class="list-group-item">
+                    <a href="/product/{{product.id}}" class="list-group-item">
                         名称：{{product.name}}
                         <br />
                         价格：{{product.price}}
                         <br />
                         卖家：{{product.seller}}
                         <br />
+                        {% if product.state == 1 %}已有人提交订单<br />{% endif %}
                     </a>
             {% if forloop.last %}
                 </div>

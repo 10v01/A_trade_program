@@ -20,6 +20,15 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+            <form action="/search">
+                <br>
+                <input type="text" name="product_name" value="{{ product_name }}">
+                <input type="submit" value="搜索">
+            </form>
+        </div>
+    </div>
+    <div class="row">
         {% for product in products %}
             {% if forloop.first %}
                 <div class="list-group">

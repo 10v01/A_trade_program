@@ -1,0 +1,23 @@
+<!-- mark_add.html -->
+{% extends "base.html" %}
+{% block title %}添加至购物车{% endblock %}
+{% block content %}
+
+<div class="contrainer">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    {% if state == 1 %} 啥？你想购买自己卖的物品？ {% endif %}
+                    {% if state == 2 %} 此商品已在你的收藏中 {% endif %}
+                    {% if state == 3 %} 添加成功 {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
