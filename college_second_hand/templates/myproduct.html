@@ -19,8 +19,17 @@
                         <br />
                         卖家：{{product.seller}}
                         <br />
-                        {% if product.state == 1 %}已有人提交订单<br />{% endif %}
                     </a>
+                    {% if product.state == 1 %}已有人提交订单<br />{% endif %}
+                    {% if product.state == 2 %}
+                    <form action="/product_send" method="POST">
+                        {% csrf_token %}
+                        <input type='hidden' name='product_id' value='{{ product.id }}' />
+                        <button class="btn btn-info" type="submit">发货</button>
+                    </form>
+                    {% endif %}
+                    {% if product.state == 3 %}等待买家确认收货<br />{% endif %}
+                    {% if product.state == 4 %}买家已收货<br />{% endif %}
             {% if forloop.last %}
                 </div>
             {% endif %}

@@ -20,16 +20,40 @@
                         卖家：{{order.product.seller}}
                         <br />
                     </a>
+                    {% if order.state == 0 %}
                     <form action="/order_remove" method="POST">
                         {% csrf_token %}
                         <input type='hidden' name='order_id' value='{{ order.id }}' />
-                        <button class="btn btn-info" type="submit">删除订单</button>
+                        <button class="btn btn-info" type="submit">取消订单</button>
                     </form>
                     <form action="/pay" method="POST">
                         {% csrf_token %}
                         <input type='hidden' name='order_id' value='{{ order.id }}' />
-                        <button class="btn btn-info" type="submit">去支付</button>
+                        <button class="btn btn-info" type="submit">提交付款信息到支付平台</button>
                     </form>
+                    {% endif %}
+                    {% if order.state == 1 %}
+                    <a href="http://127.0.0.1:10086/pay/{{ order.payment_id }}" class="btn btn-info">去支付</a>
+                    {% endif %}
+                    {% if order.state == -1 %}
+                    <button class="btn btn-default">此订单已取消</button>
+                    {% endif %}
+                    {% if order.state == 2 %}
+                    <button class="btn btn-success">付款成功，请等待卖家发货</button>
+                    {% endif %}
+                    {% if order.state == 3 %}
+                    <form action="/order_receive" method="POST">
+                        {% csrf_token %}
+                        <input type='hidden' name='order_id' value='{{ order.id }}' />
+                        <button class="btn btn-info" type="submit">确认收货</button>
+                    </form>
+                    {% endif %}
+                    {% if order.state == 4 %}
+                    <a href="/comment/{{ order.id }}" class="btn btn-info">评价</a>
+                    {% endif %}
+                    {% if order.state == 5 %}
+                    <button class="btn btn-success">已评价</button>
+                    {% endif %}
             {% if forloop.last %}
                 </div>
             {% endif %}

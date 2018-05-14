@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}查看自己的绑定{% endblock %}
+{% block content %}
+
+<div class="contrainer">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        {% for binding in bindings %}
+            {% if forloop.first %}
+                <div class="list-group">
+            {% endif %}
+                    你要绑定的交易平台账号：{{binding.trade_profile}}
+                    <br />
+                    你的key：{{binding.key}}
+                    <br />
+            {% if forloop.last %}
+                </div>
+            {% endif %}
+        {% empty %}
+            <center><h3>目前没有绑定</h3></center>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

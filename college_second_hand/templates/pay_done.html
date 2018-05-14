@@ -1,0 +1,21 @@
+<!-- pay_done.html -->
+{% extends "base.html" %}
+{% block title %}支付成功{% endblock %}
+{% block content %}
+
+<div class="contrainer">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    支付完成
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

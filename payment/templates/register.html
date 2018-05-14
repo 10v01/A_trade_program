@@ -1,0 +1,26 @@
+<!--login.html -->
+{% extends "base.html" %}
+{% block title %}注册{% endblock %}
+{% block styleshit %}<link href="/static/css/signin.css" rel="stylesheet">{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="container">
+
+        <form class="form-signin" action="/accounts/register/" method="POST">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Please register</h2>
+            <input type="text" maxlength="16" name='username' class="form-control" placeholder="Username" required autofocus />
+            <input type="password" name='password' class="form-control" placeholder="Password" required />
+            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm your password" required />
+            <input type="password" name="paypassword" class="form-control" placeholder="Input your password for payment" required />
+            <input type="password" name="paypassword_confirm" class="form-control" placeholder="Confirm your password for payment" required />
+            <br /><br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -14,6 +14,10 @@
                     <br />
                     {{ product.id }}
                     <br />
+                    Name:
+                    <br />
+                    {{ product.name }}
+                    <br />
                     Description:
                     <br />
                     {{ product.description }}
@@ -22,13 +26,16 @@
     </div>
     <div class="row" align="center">
         {% if profile_cur == product.seller %}
+        {% if product.state == -1 or product.state == 0 or product.state == -2 %}
             <a href="/product_modify/{{product.id}}" class="btn btn-info">修改商品信息</a>
             <form action="/product_remove" method="POST">
                 {% csrf_token %}
                 <input type='hidden' name='product_id' value='{{ product.id }}' />
                 <button class="btn btn-info" type="submit">删除商品</button>
             </form>
+        {% endif %}
         {% else %}
+        {% if product.state == 0 %}
             <form action="/mark_add" method="POST">
                 {% csrf_token %}
                 <input type='hidden' name='product_id' value='{{ product.id }}' />
@@ -40,6 +47,30 @@
                 <button class="btn btn-info" type="submit">现在购买</button>
             </form>
         {% endif %}
+        {% endif %}
+        {% if profile_cur.usertype == 1 %}
+        <div class="row" align="center">
+            <form action="/check" method="POST">
+                {% csrf_token %}
+                <input type='hidden' name='product_id' value='{{ product.id }}' />
+                <input type='hidden' name='state' value='0' />
+                <button class="btn btn-info" type="submit">通过审核</button>
+            </form>
+            <form action="/check" method="POST">
+                {% csrf_token %}
+                <input type='hidden' name='product_id' value='{{ product.id }}' />
+                <input type='hidden' name='state' value='1' />
+                <button class="btn btn-info" type="submit">不通过审核</button>
+            </form>
+        </div>
+        {% endif %}
+        {% if product.state == -1 %}<button class="btn btn-default" type="submit">此商品正在审核中</button>{% endif %}
+        {% if product.state == -2 %}<button class="btn btn-default" type="submit">此商品涉嫌违规</button>{% endif %}
+        {% if product.state == 1 %}<button class="btn btn-default" type="submit">已有人提交订单，但未付款</button>{% endif %}
+        {% if product.state == 2 %}<button class="btn btn-default" type="submit">此商品已被购买</button>{% endif %}
+        {% if product.state == 3 %}<button class="btn btn-default" type="submit">此商品已被购买</button>{% endif %}
+        {% if product.state == 4 %}<button class="btn btn-default" type="submit">此商品已被购买</button>{% endif %}
+        {% if product.state == 5 %}<button class="btn btn-default" type="submit">此商品已被购买</button>{% endif %}
     </div>
 </div>
 {% endblock %}

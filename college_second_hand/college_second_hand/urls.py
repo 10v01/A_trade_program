@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,re_path
+from django.urls import path,re_path,include
 from mainsite import views
 
 urlpatterns = [
@@ -51,4 +51,32 @@ urlpatterns = [
     path('product_remove', views.product_remove),
     path('product_remove/', views.product_remove),
     path('search', views.search),
+    path('search/', views.search),
+    path('profile_modify', views.profile_modify),
+    path('profile_modify/', views.profile_modify),
+    path('change_password', views.change_password),
+    path('change_password/', views.change_password),
+    path('pay', views.pay),
+    path('pay/', views.pay),
+    path('pay_finish', views.pay_finish),
+    path('pay_finish/', views.pay_finish),
+    path('pay_cancel', views.pay_cancel),
+    path('pay_cancel/', views.pay_cancel),
+    path('product_send', views.product_send),
+    path('product_send/', views.product_send),
+    path('order_receive', views.order_receive),
+    path('order_receive/', views.order_receive),
+    re_path(r'^comment/(\d+)$', views.comment),
+    path('check', views.check),
+    path('check/', views.check),
+    path('checkall', views.checkall),
+    path('checkall/', views.checkall),
+    path('college_authenticate', views.college_authenticate),
+    path('college_authenticate/', views.college_authenticate),
+    path('college_authenticate_confirm', views.college_authenticate_confirm),
+    path('college_authenticate_confirm/', views.college_authenticate_confirm),
+    path('bind_payment', views.bind_payment),
+    path('bind_payment/', views.bind_payment),
+    path('bind_payment_confirm', views.bind_payment_confirm),
+    path('bind_payment_confirm/', views.bind_payment_confirm),
 ]

@@ -1,0 +1,22 @@
+<!-- bind_payment_confirm.html -->
+{% extends "base.html" %}
+{% block title %}绑定支付账号{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4" align="center">
+            <form class="form-signin" action="#" method="POST">
+                {% csrf_token %}
+                <h2 class="form-signin-heading">输入你收到的验证码</h2>
+                <input type="text" name='key' class="form-control" placeholder="key" required />
+                <br />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">确认</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

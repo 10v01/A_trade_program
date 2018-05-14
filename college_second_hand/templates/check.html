@@ -1,0 +1,72 @@
+<!-- check.html -->
+{% extends "base.html" %}
+{% block title %}查看商品{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        {% for product in products %}
+            {% if forloop.first %}
+                <div class="list-group">
+            {% endif %}
+                    <a href="/product/{{product.id}}" class="list-group-item">
+                        名称：{{product.name}}
+                        <br />
+                        价格：{{product.price}}
+                        <br />
+                        卖家：{{product.seller}}
+                        <br />
+                    </a>
+                    <div class="row" align="center">
+                        <form action="/check" method="POST">
+                            {% csrf_token %}
+                            <input type='hidden' name='product_id' value='{{ product.id }}' />
+                            <input type='hidden' name='state' value='0' />
+                            <button class="btn btn-info" type="submit">通过审核</button>
+                        </form>
+                        <form action="/check" method="POST">
+                            {% csrf_token %}
+                            <input type='hidden' name='product_id' value='{{ product.id }}' />
+                            <input type='hidden' name='state' value='1' />
+                            <button class="btn btn-info" type="submit">不通过审核</button>
+                        </form>
+                    </div>
+            {% if forloop.last %}
+                </div>
+            {% endif %}
+        {% empty %}
+            <center><h3>目前没有商品</h3></center>
+        {% endfor %}
+    </div>
+    <div class="row" align="center">
+            目前是第{{ products.number }}页
+    </div>
+    <div class="pagination pagination-centered" style="height: auto;">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="row" align="center">
+        {% if products.has_previous %}
+            <a class="btn btn-info" href="?p={{ products.previous_page_number }}">
+                上一页
+            </a>
+        {% else %}
+            <a class="btn btn-default" href="#">
+                上一页
+            </a>
+        {% endif %}
+        {% if products.has_next %}
+            <a class="btn btn-info" href="?p={{ products.next_page_number }}">
+                下一页
+            </a>
+        {% else %}
+            <a class="btn btn-default " href="#">
+                下一页
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

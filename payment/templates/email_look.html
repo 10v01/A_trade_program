@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}假装这是邮箱{% endblock %}
+{% block content %}
+
+<div class="contrainer">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    此邮箱收到的邮件为:{{key}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

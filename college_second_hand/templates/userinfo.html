@@ -2,6 +2,9 @@
 {% block title %} ddf {% endblock %}
 {% block content %}
 <div class="container">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -22,9 +25,18 @@
         <br />
         电话：{{ userinfo.phone }}
         <br />
-        绑定的支付账号：************
+        绑定的支付账号：{{ userinfo.BoundPayment }}
         <br />
-
+        <a href="/profile_modify" class="btn btn-info">修改用户信息</a>
+        <a href="/change_password" class="btn btn-info">修改密码</a>
+        <a href="/college_authenticate" class="btn btn-info">使用邮箱验证学生身份</a>
+        {% if userinfo.email_binding is not None %}
+        <a href="/college_authenticate_confirm" class="btn btn-info">邮件已发，输入key</a>
+        {% endif %}
+        <a href="/bind_payment" class="btn btn-info">绑定支付账号</a>
+        {% if userinfo.pay_binding is not None %}
+        <a href="/bind_payment_confirm" class="btn btn-info">支付账号验证已发，输入key</a>
+        {% endif %}
     </p>
 </div>
 {% endblock %}
