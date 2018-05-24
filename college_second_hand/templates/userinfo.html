@@ -25,7 +25,13 @@
         <br />
         电话：{{ userinfo.phone }}
         <br />
-        绑定的支付账号：{{ userinfo.BoundPayment }}
+        {% if userinfo.BoundPayment %}绑定的支付账号：{{ userinfo.BoundPayment }}
+        {% else %}尚未绑定支付账号
+        {% endif %}
+        <br />
+        {% if userinfo.email %}邮箱：{{ userinfo.email }}
+        {% else %}尚未验证身份
+        {% endif %}
         <br />
         <a href="/profile_modify" class="btn btn-info">修改用户信息</a>
         <a href="/change_password" class="btn btn-info">修改密码</a>

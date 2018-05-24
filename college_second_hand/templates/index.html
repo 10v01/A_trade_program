@@ -11,11 +11,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading" align="center">
-                    <h3>欢淫光淋二手交♂易网站</h3>
+                    <h3>欢迎光临二手交易网站</h3>
                     {% if username %}
                         欢迎:{{username}}
                         {% if profile_cur.usertype == 1 %}
-                            <br />狗管理早！
+                            <br />管理员模式
                         {% endif %}
                     {% endif %}
                 </div>
@@ -34,7 +34,7 @@
     <div class="row">
         {% for product in products %}
             {% if forloop.first %}
-                <div class="list-group">
+                <div class="container">
             {% endif %}
                     <a href="/product/{{product.id}}" class="list-group-item">
                         名称：{{product.name}}

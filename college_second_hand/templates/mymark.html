@@ -10,7 +10,7 @@
     <div class="row">
         {% for mark in marks %}
             {% if forloop.first %}
-                <div class="list-group">
+                <div class="container">
             {% endif %}
                     <a href="/product/{{order.product.id}}" class="list-group-item">
                         名称：{{mark.product.name}}

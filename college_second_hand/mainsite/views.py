@@ -608,11 +608,12 @@ def order_receive(request):
     messages.add_message(request, messages.SUCCESS, "成功")
     return redirect('/myorder')
 
+@login_required(login_url='/login/')
 def comment(request, order_id):
     TheTimeOfNow = datetime.now()
     if request.user.is_authenticated:
         username = request.user.username
-        profile_cur = models.Profile.objects.get(user=request.user)
+    profile_cur = models.Profile.objects.get(user=request.user)
     if request.method != 'POST':
         return render(request, 'comment.html', locals())
     comment_form = forms.CommentForm(request.POST)
@@ -770,7 +771,7 @@ def college_authenticate_confirm(request):
     profile_cur = models.Profile.objects.get(user=request.user)
     if request.method != 'POST':
         return render(request, 'college_authenticate_confirm.html', locals())
-    confirm_form = forms.EmailBindConfirmForm(request.POST)
+    confirm_form = forms.ConfirmForm(request.POST)
     if not confirm_form.is_valid():
         messages.add_message(request, messages.INFO, "请检查输入字段的内容")
         return render(request, 'college_authenticate_confirm.html', locals())

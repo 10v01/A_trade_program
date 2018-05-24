@@ -9,7 +9,7 @@
     <div class="row">
         {% for product in products %}
             {% if forloop.first %}
-                <div class="list-group">
+                <div class="container">
             {% endif %}
                     <a href="/product/{{product.id}}" class="list-group-item">
                         名称：{{product.name}}

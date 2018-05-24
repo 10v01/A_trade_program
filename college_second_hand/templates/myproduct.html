@@ -3,33 +3,35 @@
 {% block title %}我的商品{% endblock %}
 {% block content %}
 
-<div class="contrainer">
+<div class="container">
     {% for message in messages %}
     <div class="alert alert-{{message.tags}}">{{message}}</div>
     {% endfor %}
     <div class="row">
         {% for product in products %}
             {% if forloop.first %}
-                <div class="list-group">
+                <div class="container">
             {% endif %}
-                    <a href="/product/{{product.id}}" class="list-group-item">
-                        名称：{{product.name}}
-                        <br />
-                        价格：{{product.price}}
-                        <br />
-                        卖家：{{product.seller}}
-                        <br />
-                    </a>
-                    {% if product.state == 1 %}已有人提交订单<br />{% endif %}
-                    {% if product.state == 2 %}
-                    <form action="/product_send" method="POST">
-                        {% csrf_token %}
-                        <input type='hidden' name='product_id' value='{{ product.id }}' />
-                        <button class="btn btn-info" type="submit">发货</button>
-                    </form>
-                    {% endif %}
-                    {% if product.state == 3 %}等待买家确认收货<br />{% endif %}
-                    {% if product.state == 4 %}买家已收货<br />{% endif %}
+                    <div class="list-group-item">
+                        <a href="/product/{{product.id}}" class="list-group-item">
+                            名称：{{product.name}}
+                            <br />
+                            价格：{{product.price}}
+                            <br />
+                            卖家：{{product.seller}}
+                            <br />
+                        </a>
+                        {% if product.state == 1 %}已有人提交订单<br />{% endif %}
+                        {% if product.state == 2 %}
+                        <form action="/product_send" method="POST">
+                            {% csrf_token %}
+                            <input type='hidden' name='product_id' value='{{ product.id }}' />
+                            <button class="btn btn-info" type="submit">发货</button>
+                        </form>
+                        {% endif %}
+                        {% if product.state == 3 %}等待买家确认收货<br />{% endif %}
+                        {% if product.state == 4 %}买家已收货<br />{% endif %}
+                    </div>
             {% if forloop.last %}
                 </div>
             {% endif %}
