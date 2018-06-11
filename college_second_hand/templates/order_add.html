@@ -11,13 +11,14 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading" align="center">
-                    {% if state == 1 %} 请补充你的姓名 {% endif %}
-                    {% if state == 2 %} 请补充你的地址 {% endif %}
-                    {% if state == 3 %} 请补充你的手机号 {% endif %}
-                    {% if state == 4 %} 啥？你想购买自己卖的物品？ {% endif %}
-                    {% if state == 5 %} 你已提交过此商品的订单 {% endif %}
-                    {% if state == 6 %} 此商品不处于待售状态 {% endif %}
-                    {% if state == 7 %} 订单成功生成 {% endif %}
+                    {% if result == 1 %} 你尚未使用邮箱进行身份认证 {% endif %}
+                    {% if result == 2 %} 你尚未绑定支付账号 {% endif %}
+                    {% if result == 3 %} 请补充你的名字 {% endif %}
+                    {% if result == 4 %} 请补充你的地址 {% endif %}
+                    {% if result == 5 %} 请补充你的手机号 {% endif %}
+                    {% if result == 6 %} 哈?你想购买自己卖的商品? {% endif %}
+                    {% if result == 7 %} 商品不处于待售状态 {% endif %}
+                    {% if result == 0 %} 订单生成成功 {% endif %}
                 </div>
             </div>
         </div>
