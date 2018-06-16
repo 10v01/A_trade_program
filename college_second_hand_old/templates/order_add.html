@@ -1,0 +1,27 @@
+<!-- order_add.html -->
+{% extends "base.html" %}
+{% block title %}添加至购物车{% endblock %}
+{% block content %}
+
+<div class="contrainer">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    {% if state == 1 %} 请补充你的姓名 {% endif %}
+                    {% if state == 2 %} 请补充你的地址 {% endif %}
+                    {% if state == 3 %} 请补充你的手机号 {% endif %}
+                    {% if state == 4 %} 啥？你想购买自己卖的物品？ {% endif %}
+                    {% if state == 5 %} 你已提交过此商品的订单 {% endif %}
+                    {% if state == 6 %} 此商品不处于待售状态 {% endif %}
+                    {% if state == 7 %} 订单成功生成 {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

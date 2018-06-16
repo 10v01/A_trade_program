@@ -1,0 +1,7 @@
+主站为college_second_hand
+虚拟的第三方支付平台、邮箱为payment
+college_second_hand运行方式:终端进入目录，python manage.py runserver 127.0.0.1:8086
+payment运行方式:终端进入目录，python manage.py runserver 127.0.0.1:10086
+因为ip相同，所以建议使用无痕浏览方式打开http://127.0.0.1:10086，以免session出现问题。
+预置管理员账号:bamboo，密码233
+为方便操作，payment绑定账号设置为和主站账号相同，密码均为233

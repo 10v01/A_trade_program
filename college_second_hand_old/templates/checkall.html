@@ -21,7 +21,6 @@
                         状态：{{product.state}}
                         <br />
                     </a>
-                    {% if product.state <= 0 %}
                     <div class="row" align="center">
                         <form action="/checkall" method="POST">
                             {% csrf_token %}
@@ -36,7 +35,6 @@
                             <button class="btn btn-info" type="submit">不通过审核</button>
                         </form>
                     </div>
-                    {% endif %}
             {% if forloop.last %}
                 </div>
             {% endif %}
