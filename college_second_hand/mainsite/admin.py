@@ -20,7 +20,6 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(models.Profile, ProfileAdmin)
 admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Product, ProductAdmin)
-admin.site.register(models.ProductPhoto)
 admin.site.register(models.Order)
 admin.site.register(models.Mark)
 admin.site.register(models.Comment)

@@ -1,0 +1,28 @@
+<!-- order_add.html -->
+{% extends "base.html" %}
+{% block title %}添加至购物车{% endblock %}
+{% block content %}
+
+<div class="contrainer">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    {% if result == 1 %} 你尚未使用邮箱进行身份认证 {% endif %}
+                    {% if result == 2 %} 你尚未绑定支付账号 {% endif %}
+                    {% if result == 3 %} 请补充你的名字 {% endif %}
+                    {% if result == 4 %} 请补充你的地址 {% endif %}
+                    {% if result == 5 %} 请补充你的手机号 {% endif %}
+                    {% if result == 6 %} 哈?你想购买自己卖的商品? {% endif %}
+                    {% if result == 7 %} 商品不处于待售状态 {% endif %}
+                    {% if result == 0 %} 订单生成成功 {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
